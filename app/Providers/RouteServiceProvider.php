@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    public const LOGIN = 'login';
 
     /**
-     *
      * @return void
      */
     public function boot()
