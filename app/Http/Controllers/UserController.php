@@ -26,7 +26,7 @@ class UserController extends Controller
         return $this->JsonResponse($data);
     }
 
-    public function create(UserRequest $request, UserService $service)
+    public function create(UserRequest $request, UserService $service): JsonResponse
     {
         $user = $service->create($request->validated());
 
@@ -60,7 +60,7 @@ class UserController extends Controller
         return $this->JsonResponse($data);
     }
 
-    public function destroy(UserService $service, User $user)
+    public function destroy(UserService $service, User $user): JsonResponse
     {
         $service->delete($user);
 

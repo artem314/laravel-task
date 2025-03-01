@@ -5,6 +5,7 @@
 - PHP 8.0
 - MySQL 8
 - NGINX
+- Laravel 9
 
 ## Задание:
 
