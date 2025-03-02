@@ -8,11 +8,15 @@ fi
 if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 
 	if [ "$APP_ENV" != 'prod' ]; then
-		composer install --prefer-dist --no-progress --no-interaction
+	    if [ ! -f composer.json ]; then
+            composer install --prefer-dist --no-progress --no-interaction
+            php artisan migrate
+            php artisan db:seed
+        fi
 	fi
 
-	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
-	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
+	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX storage
+	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX storage
 fi
 
 exec docker-php-entrypoint "$@"
