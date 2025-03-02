@@ -78,7 +78,7 @@ RUN set -eux; \
 
 RUN rm -f .env.local.php
 
-FROM nginx as app_nginx
+FROM nginx AS app_nginx
 
 WORKDIR /srv/app
 
